@@ -1,0 +1,380 @@
+> setwd("C:\\Users\\Jijo Marhews\\Documents\\6 BMSCE\\0 Lab\\DSR Lab\\Q4")
+> getwd()
+[1] "C:/Users/Jijo Marhews/Documents/6 BMSCE/0 Lab/DSR Lab/Q4"
+> list.files()
+[1] "1.PNG"         "2.PNG"        
+[3] "3.PNG"         "bank-data.csv"
+[5] "fourth.R"      "q4.PNG"       
+[7] "Q4Plot.png"   
+> grep(".csv",list.files(),value=T)
+[1] "bank-data.csv"
+> 
+> 
+> b=read.csv("bank-data.csv")
+> b
+        id age    sex     region
+1  ID12101  48 FEMALE INNER_CITY
+2  ID12102  40   MALE       TOWN
+3  ID12103  51 FEMALE INNER_CITY
+4  ID12104  23 FEMALE       TOWN
+5  ID12105  57 FEMALE      RURAL
+6  ID12106  57 FEMALE       TOWN
+7  ID12107  22   MALE      RURAL
+8  ID12108  58   MALE       TOWN
+9  ID12109  37 FEMALE   SUBURBAN
+10 ID12110  54   MALE       TOWN
+11 ID12111  66 FEMALE       TOWN
+12 ID12112  52 FEMALE INNER_CITY
+13 ID12113  44 FEMALE       TOWN
+14 ID12114  66 FEMALE       TOWN
+15 ID12115  36   MALE      RURAL
+16 ID12116  38 FEMALE INNER_CITY
+17 ID12117  37 FEMALE       TOWN
+18 ID12118  46 FEMALE   SUBURBAN
+19 ID12119  62 FEMALE INNER_CITY
+20 ID12120  31   MALE       TOWN
+21 ID12121  61   MALE INNER_CITY
+22 ID12122  50   MALE       TOWN
+23 ID12123  54   MALE INNER_CITY
+24 ID12124  27 FEMALE       TOWN
+25 ID12125  22   MALE INNER_CITY
+26 ID12126  56   MALE INNER_CITY
+27 ID12127  45   MALE INNER_CITY
+28 ID12128  39 FEMALE       TOWN
+29 ID12129  39 FEMALE INNER_CITY
+30 ID12130  61   MALE      RURAL
+31 ID12131  61 FEMALE      RURAL
+32 ID12132  20 FEMALE       TOWN
+33 ID12133  45   MALE   SUBURBAN
+34 ID12134  33 FEMALE INNER_CITY
+35 ID12135  43   MALE   SUBURBAN
+36 ID12136  27 FEMALE INNER_CITY
+37 ID12137  19   MALE      RURAL
+38 ID12138  36 FEMALE      RURAL
+39 ID12139  43 FEMALE       TOWN
+40 ID12140  66 FEMALE   SUBURBAN
+41 ID12141  55   MALE       TOWN
+42 ID12142  47 FEMALE INNER_CITY
+43 ID12143  67   MALE       TOWN
+44 ID12144  32 FEMALE       TOWN
+45 ID12145  20   MALE INNER_CITY
+46 ID12146  64   MALE INNER_CITY
+47 ID12147  50 FEMALE INNER_CITY
+48 ID12148  29   MALE INNER_CITY
+49 ID12149  52   MALE INNER_CITY
+50 ID12150  47 FEMALE      RURAL
+51 ID12151  24   MALE       TOWN
+52 ID12152  36   MALE       TOWN
+53 ID12153  43   MALE       TOWN
+54 ID12154  48   MALE   SUBURBAN
+55 ID12155  63   MALE       TOWN
+56 ID12156  52 FEMALE      RURAL
+57 ID12157  58 FEMALE INNER_CITY
+58 ID12158  28   MALE INNER_CITY
+59 ID12159  29 FEMALE INNER_CITY
+60 ID12160  34   MALE INNER_CITY
+61 ID12161  42 FEMALE INNER_CITY
+62 ID12162  65 FEMALE INNER_CITY
+63 ID12163  47   MALE INNER_CITY
+64 ID12164  20   MALE INNER_CITY
+65 ID12165  21   MALE       TOWN
+66 ID12166  42   MALE INNER_CITY
+67 ID12167  19   MALE       TOWN
+68 ID12168  41 FEMALE       TOWN
+69 ID12169  30   MALE       TOWN
+70 ID12170  31 FEMALE      RURAL
+71 ID12171  25   MALE INNER_CITY
+72 ID12172  21   MALE INNER_CITY
+73 ID12173  36   MALE INNER_CITY
+74 ID12174  58 FEMALE INNER_CITY
+75 ID12175  64 FEMALE INNER_CITY
+76 ID12176  59 FEMALE      RURAL
+77 ID12177  45 FEMALE       TOWN
+78 ID12178  61   MALE INNER_CITY
+79 ID12179  30 FEMALE INNER_CITY
+80 ID12180  58 FEMALE       TOWN
+81 ID12181  50 FEMALE       TOWN
+82 ID12182  30   MALE INNER_CITY
+83 ID12183  29 FEMALE INNER_CITY
+     income married children car
+1  17546.00      NO        1  NO
+2  30085.10     YES        3 YES
+3  16575.40     YES        0 YES
+4  20375.40     YES        3  NO
+5  50576.30     YES        0  NO
+6  37869.60     YES        2  NO
+7   8877.07      NO        0  NO
+8  24946.60     YES        0 YES
+9  25304.30     YES        2 YES
+10 24212.10     YES        2 YES
+11 59803.90     YES        0  NO
+12 26658.80      NO        0 YES
+13 15735.80     YES        1  NO
+14 55204.70     YES        1 YES
+15 19474.60     YES        0  NO
+16 22342.10     YES        0 YES
+17 17729.80     YES        2  NO
+18 41016.00     YES        0  NO
+19 26909.20     YES        0  NO
+20 22522.80     YES        0 YES
+21 57880.70     YES        2  NO
+22 16497.30     YES        2  NO
+23 38446.60     YES        0  NO
+24 15538.80      NO        0 YES
+25 12640.30      NO        2 YES
+26 41034.00     YES        0 YES
+27 20809.70     YES        0  NO
+28 20114.00     YES        1  NO
+29 29359.10      NO        3 YES
+30 24270.10     YES        1  NO
+31 22942.90     YES        2  NO
+32 16325.80     YES        2  NO
+33 23443.20     YES        1 YES
+34 29921.30      NO        3 YES
+35 37521.90      NO        0  NO
+36 19868.00     YES        2  NO
+37 10953.00     YES        3 YES
+38 13381.00      NO        0 YES
+39 18504.30     YES        0 YES
+40 25391.50      NO        2  NO
+41 26774.20     YES        0  NO
+42 26952.60     YES        0 YES
+43 55716.50      NO        2 YES
+44 27571.50     YES        0 YES
+45 13740.00      NO        2 YES
+46 52670.60     YES        2  NO
+47 13283.90      NO        1 YES
+48 13106.60      NO        2  NO
+49 39547.80      NO        2 YES
+50 17867.30     YES        2 YES
+51 14309.70      NO        2 YES
+52 23894.80     YES        0  NO
+53 16259.70     YES        1  NO
+54 29794.10      NO        1  NO
+55 56842.50     YES        0  NO
+56 47835.80      NO        3  NO
+57 24977.50      NO        0  NO
+58 23124.90     YES        0  NO
+59 15143.80     YES        0  NO
+60 25334.30      NO        1 YES
+61 24763.30     YES        1  NO
+62 36589.00      NO        1 YES
+63 27022.60     YES        2  NO
+64 11700.40     YES        0  NO
+65  5014.21      NO        0 YES
+66 17390.10     YES        0  NO
+67 10861.00      NO        2  NO
+68 34892.90      NO        0  NO
+69 19403.10      NO        2  NO
+70 10441.90     YES        2  NO
+71 14064.90     YES        3 YES
+72  8062.73      NO        0  NO
+73 31982.00     YES        3 YES
+74 23197.50     YES        2  NO
+75 52674.00      NO        2 YES
+76 35610.50      NO        2 YES
+77 26948.00      NO        0  NO
+78 49456.70     YES        1 YES
+79 14724.50     YES        0 YES
+80 34524.90     YES        2 YES
+81 22052.10      NO        3  NO
+82 27808.10      NO        3  NO
+83 12591.40     YES        1  NO
+   save_act current_act mortgage
+1        NO          NO       NO
+2        NO         YES      YES
+3       YES         YES       NO
+4        NO         YES       NO
+5       YES          NO       NO
+6       YES         YES       NO
+7        NO         YES       NO
+8       YES         YES       NO
+9        NO          NO       NO
+10      YES         YES       NO
+11      YES         YES       NO
+12      YES         YES      YES
+13      YES         YES      YES
+14      YES         YES      YES
+15      YES         YES      YES
+16      YES         YES      YES
+17       NO          NO      YES
+18      YES          NO      YES
+19      YES          NO       NO
+20      YES         YES       NO
+21      YES          NO       NO
+22      YES         YES       NO
+23      YES         YES       NO
+24      YES         YES      YES
+25      YES         YES       NO
+26      YES         YES      YES
+27      YES         YES      YES
+28       NO         YES       NO
+29       NO         YES      YES
+30       NO         YES       NO
+31      YES         YES       NO
+32      YES          NO       NO
+33      YES         YES       NO
+34      YES          NO       NO
+35      YES         YES       NO
+36      YES         YES       NO
+37      YES         YES       NO
+38       NO         YES       NO
+39      YES         YES       NO
+40       NO         YES       NO
+41       NO         YES      YES
+42       NO         YES       NO
+43      YES          NO       NO
+44       NO         YES      YES
+45      YES         YES      YES
+46      YES         YES      YES
+47      YES         YES       NO
+48      YES         YES      YES
+49       NO         YES       NO
+50      YES          NO       NO
+51      YES          NO       NO
+52       NO          NO       NO
+53      YES         YES       NO
+54      YES         YES       NO
+55      YES         YES      YES
+56      YES          NO       NO
+57       NO         YES       NO
+58      YES         YES       NO
+59       NO         YES       NO
+60      YES         YES      YES
+61      YES         YES      YES
+62       NO         YES       NO
+63      YES         YES       NO
+64      YES          NO       NO
+65      YES         YES      YES
+66      YES         YES       NO
+67      YES         YES       NO
+68      YES         YES      YES
+69      YES         YES       NO
+70       NO         YES       NO
+71      YES         YES       NO
+72       NO         YES       NO
+73      YES         YES      YES
+74      YES          NO      YES
+75      YES         YES       NO
+76       NO          NO       NO
+77      YES         YES      YES
+78      YES         YES      YES
+79       NO         YES       NO
+80      YES          NO       NO
+81      YES         YES       NO
+82       NO         YES       NO
+83      YES         YES       NO
+   pep
+1  YES
+2   NO
+3   NO
+4   NO
+5   NO
+6  YES
+7  YES
+8   NO
+9   NO
+10  NO
+11  NO
+12  NO
+13 YES
+14 YES
+15  NO
+16  NO
+17  NO
+18  NO
+19 YES
+20  NO
+21 YES
+22  NO
+23  NO
+24  NO
+25  NO
+26  NO
+27  NO
+28 YES
+29  NO
+30 YES
+31  NO
+32  NO
+33 YES
+34  NO
+35 YES
+36  NO
+37  NO
+38 YES
+39  NO
+40  NO
+41 YES
+42  NO
+43 YES
+44  NO
+45  NO
+46 YES
+47 YES
+48 YES
+49 YES
+50  NO
+51  NO
+52  NO
+53 YES
+54 YES
+55  NO
+56 YES
+57 YES
+58 YES
+59  NO
+60 YES
+61 YES
+62 YES
+63  NO
+64  NO
+65  NO
+66  NO
+67  NO
+68  NO
+69  NO
+70 YES
+71  NO
+72 YES
+73 YES
+74  NO
+75 YES
+76 YES
+77  NO
+78 YES
+79  NO
+80 YES
+81 YES
+82  NO
+83  NO
+ [ reached 'max' / getOption("max.print") -- omitted 517 rows ]
+> 
+> nrow(b)
+[1] 600
+> ncol(b)
+[1] 12
+> colnames(b)
+ [1] "id"          "age"        
+ [3] "sex"         "region"     
+ [5] "income"      "married"    
+ [7] "children"    "car"        
+ [9] "save_act"    "current_act"
+[11] "mortgage"    "pep"        
+> str(b)
+'data.frame':	600 obs. of  12 variables:
+ $ id         : chr  "ID12101" "ID12102" "ID12103" "ID12104" ...
+ $ age        : int  48 40 51 23 57 57 22 58 37 54 ...
+ $ sex        : chr  "FEMALE" "MALE" "FEMALE" "FEMALE" ...
+ $ region     : chr  "INNER_CITY" "TOWN" "INNER_CITY" "TOWN" ...
+ $ income     : num  17546 30085 16575 20375 50576 ...
+ $ married    : chr  "NO" "YES" "YES" "YES" ...
+ $ children   : int  1 3 0 3 0 2 0 0 2 2 ...
+ $ car        : chr  "NO" "YES" "YES" "NO" ...
+ $ save_act   : chr  "NO" "NO" "YES" "NO" ...
+ $ current_act: chr  "NO" "YES" "YES" "YES" ...
+ $ mortgage   : chr  "NO" "YES" "NO" "NO" ...
+ $ pep        : chr  "YES" "NO" "NO" "NO" ...
+> 
+> plot(b$age,b$income)
+> 

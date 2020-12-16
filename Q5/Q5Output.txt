@@ -1,0 +1,439 @@
+> setwd("C:\\Users\\Jijo Marhews\\Documents\\6 BMSCE\\0 Lab\\DSR Lab\\Q5")
+> getwd()
+[1] "C:/Users/Jijo Marhews/Documents/6 BMSCE/0 Lab/DSR Lab/Q5"
+> 
+> dataset=read.delim("bank-data.csv",sep=',')
+> dataset
+        id age    sex     region   income married children car save_act
+1  ID12101  48 FEMALE INNER_CITY 17546.00      NO        1  NO       NO
+2  ID12102  40   MALE       TOWN 30085.10     YES        3 YES       NO
+3  ID12103  51 FEMALE INNER_CITY 16575.40     YES        0 YES      YES
+4  ID12104  23 FEMALE       TOWN 20375.40     YES        3  NO       NO
+5  ID12105  57 FEMALE      RURAL 50576.30     YES        0  NO      YES
+6  ID12106  57 FEMALE       TOWN 37869.60     YES        2  NO      YES
+7  ID12107  22   MALE      RURAL  8877.07      NO        0  NO       NO
+8  ID12108  58   MALE       TOWN 24946.60     YES        0 YES      YES
+9  ID12109  37 FEMALE   SUBURBAN 25304.30     YES        2 YES       NO
+10 ID12110  54   MALE       TOWN 24212.10     YES        2 YES      YES
+11 ID12111  66 FEMALE       TOWN 59803.90     YES        0  NO      YES
+12 ID12112  52 FEMALE INNER_CITY 26658.80      NO        0 YES      YES
+13 ID12113  44 FEMALE       TOWN 15735.80     YES        1  NO      YES
+14 ID12114  66 FEMALE       TOWN 55204.70     YES        1 YES      YES
+15 ID12115  36   MALE      RURAL 19474.60     YES        0  NO      YES
+16 ID12116  38 FEMALE INNER_CITY 22342.10     YES        0 YES      YES
+17 ID12117  37 FEMALE       TOWN 17729.80     YES        2  NO       NO
+18 ID12118  46 FEMALE   SUBURBAN 41016.00     YES        0  NO      YES
+19 ID12119  62 FEMALE INNER_CITY 26909.20     YES        0  NO      YES
+20 ID12120  31   MALE       TOWN 22522.80     YES        0 YES      YES
+21 ID12121  61   MALE INNER_CITY 57880.70     YES        2  NO      YES
+22 ID12122  50   MALE       TOWN 16497.30     YES        2  NO      YES
+23 ID12123  54   MALE INNER_CITY 38446.60     YES        0  NO      YES
+24 ID12124  27 FEMALE       TOWN 15538.80      NO        0 YES      YES
+25 ID12125  22   MALE INNER_CITY 12640.30      NO        2 YES      YES
+26 ID12126  56   MALE INNER_CITY 41034.00     YES        0 YES      YES
+27 ID12127  45   MALE INNER_CITY 20809.70     YES        0  NO      YES
+28 ID12128  39 FEMALE       TOWN 20114.00     YES        1  NO       NO
+29 ID12129  39 FEMALE INNER_CITY 29359.10      NO        3 YES       NO
+30 ID12130  61   MALE      RURAL 24270.10     YES        1  NO       NO
+31 ID12131  61 FEMALE      RURAL 22942.90     YES        2  NO      YES
+32 ID12132  20 FEMALE       TOWN 16325.80     YES        2  NO      YES
+33 ID12133  45   MALE   SUBURBAN 23443.20     YES        1 YES      YES
+34 ID12134  33 FEMALE INNER_CITY 29921.30      NO        3 YES      YES
+35 ID12135  43   MALE   SUBURBAN 37521.90      NO        0  NO      YES
+36 ID12136  27 FEMALE INNER_CITY 19868.00     YES        2  NO      YES
+37 ID12137  19   MALE      RURAL 10953.00     YES        3 YES      YES
+38 ID12138  36 FEMALE      RURAL 13381.00      NO        0 YES       NO
+39 ID12139  43 FEMALE       TOWN 18504.30     YES        0 YES      YES
+40 ID12140  66 FEMALE   SUBURBAN 25391.50      NO        2  NO       NO
+41 ID12141  55   MALE       TOWN 26774.20     YES        0  NO       NO
+42 ID12142  47 FEMALE INNER_CITY 26952.60     YES        0 YES       NO
+43 ID12143  67   MALE       TOWN 55716.50      NO        2 YES      YES
+44 ID12144  32 FEMALE       TOWN 27571.50     YES        0 YES       NO
+45 ID12145  20   MALE INNER_CITY 13740.00      NO        2 YES      YES
+46 ID12146  64   MALE INNER_CITY 52670.60     YES        2  NO      YES
+47 ID12147  50 FEMALE INNER_CITY 13283.90      NO        1 YES      YES
+48 ID12148  29   MALE INNER_CITY 13106.60      NO        2  NO      YES
+49 ID12149  52   MALE INNER_CITY 39547.80      NO        2 YES       NO
+50 ID12150  47 FEMALE      RURAL 17867.30     YES        2 YES      YES
+51 ID12151  24   MALE       TOWN 14309.70      NO        2 YES      YES
+52 ID12152  36   MALE       TOWN 23894.80     YES        0  NO       NO
+53 ID12153  43   MALE       TOWN 16259.70     YES        1  NO      YES
+54 ID12154  48   MALE   SUBURBAN 29794.10      NO        1  NO      YES
+55 ID12155  63   MALE       TOWN 56842.50     YES        0  NO      YES
+56 ID12156  52 FEMALE      RURAL 47835.80      NO        3  NO      YES
+57 ID12157  58 FEMALE INNER_CITY 24977.50      NO        0  NO       NO
+58 ID12158  28   MALE INNER_CITY 23124.90     YES        0  NO      YES
+59 ID12159  29 FEMALE INNER_CITY 15143.80     YES        0  NO       NO
+60 ID12160  34   MALE INNER_CITY 25334.30      NO        1 YES      YES
+61 ID12161  42 FEMALE INNER_CITY 24763.30     YES        1  NO      YES
+62 ID12162  65 FEMALE INNER_CITY 36589.00      NO        1 YES       NO
+63 ID12163  47   MALE INNER_CITY 27022.60     YES        2  NO      YES
+64 ID12164  20   MALE INNER_CITY 11700.40     YES        0  NO      YES
+65 ID12165  21   MALE       TOWN  5014.21      NO        0 YES      YES
+66 ID12166  42   MALE INNER_CITY 17390.10     YES        0  NO      YES
+67 ID12167  19   MALE       TOWN 10861.00      NO        2  NO      YES
+68 ID12168  41 FEMALE       TOWN 34892.90      NO        0  NO      YES
+69 ID12169  30   MALE       TOWN 19403.10      NO        2  NO      YES
+70 ID12170  31 FEMALE      RURAL 10441.90     YES        2  NO       NO
+71 ID12171  25   MALE INNER_CITY 14064.90     YES        3 YES      YES
+72 ID12172  21   MALE INNER_CITY  8062.73      NO        0  NO       NO
+73 ID12173  36   MALE INNER_CITY 31982.00     YES        3 YES      YES
+74 ID12174  58 FEMALE INNER_CITY 23197.50     YES        2  NO      YES
+75 ID12175  64 FEMALE INNER_CITY 52674.00      NO        2 YES      YES
+76 ID12176  59 FEMALE      RURAL 35610.50      NO        2 YES       NO
+77 ID12177  45 FEMALE       TOWN 26948.00      NO        0  NO      YES
+78 ID12178  61   MALE INNER_CITY 49456.70     YES        1 YES      YES
+79 ID12179  30 FEMALE INNER_CITY 14724.50     YES        0 YES       NO
+80 ID12180  58 FEMALE       TOWN 34524.90     YES        2 YES      YES
+81 ID12181  50 FEMALE       TOWN 22052.10      NO        3  NO      YES
+82 ID12182  30   MALE INNER_CITY 27808.10      NO        3  NO       NO
+83 ID12183  29 FEMALE INNER_CITY 12591.40     YES        1  NO      YES
+   current_act mortgage pep
+1           NO       NO YES
+2          YES      YES  NO
+3          YES       NO  NO
+4          YES       NO  NO
+5           NO       NO  NO
+6          YES       NO YES
+7          YES       NO YES
+8          YES       NO  NO
+9           NO       NO  NO
+10         YES       NO  NO
+11         YES       NO  NO
+12         YES      YES  NO
+13         YES      YES YES
+14         YES      YES YES
+15         YES      YES  NO
+16         YES      YES  NO
+17          NO      YES  NO
+18          NO      YES  NO
+19          NO       NO YES
+20         YES       NO  NO
+21          NO       NO YES
+22         YES       NO  NO
+23         YES       NO  NO
+24         YES      YES  NO
+25         YES       NO  NO
+26         YES      YES  NO
+27         YES      YES  NO
+28         YES       NO YES
+29         YES      YES  NO
+30         YES       NO YES
+31         YES       NO  NO
+32          NO       NO  NO
+33         YES       NO YES
+34          NO       NO  NO
+35         YES       NO YES
+36         YES       NO  NO
+37         YES       NO  NO
+38         YES       NO YES
+39         YES       NO  NO
+40         YES       NO  NO
+41         YES      YES YES
+42         YES       NO  NO
+43          NO       NO YES
+44         YES      YES  NO
+45         YES      YES  NO
+46         YES      YES YES
+47         YES       NO YES
+48         YES      YES YES
+49         YES       NO YES
+50          NO       NO  NO
+51          NO       NO  NO
+52          NO       NO  NO
+53         YES       NO YES
+54         YES       NO YES
+55         YES      YES  NO
+56          NO       NO YES
+57         YES       NO YES
+58         YES       NO YES
+59         YES       NO  NO
+60         YES      YES YES
+61         YES      YES YES
+62         YES       NO YES
+63         YES       NO  NO
+64          NO       NO  NO
+65         YES      YES  NO
+66         YES       NO  NO
+67         YES       NO  NO
+68         YES      YES  NO
+69         YES       NO  NO
+70         YES       NO YES
+71         YES       NO  NO
+72         YES       NO YES
+73         YES      YES YES
+74          NO      YES  NO
+75         YES       NO YES
+76          NO       NO YES
+77         YES      YES  NO
+78         YES      YES YES
+79         YES       NO  NO
+80          NO       NO YES
+81         YES       NO YES
+82         YES       NO  NO
+83         YES       NO  NO
+ [ reached 'max' / getOption("max.print") -- omitted 517 rows ]
+> 
+> head(dataset)
+       id age    sex     region  income married children car save_act
+1 ID12101  48 FEMALE INNER_CITY 17546.0      NO        1  NO       NO
+2 ID12102  40   MALE       TOWN 30085.1     YES        3 YES       NO
+3 ID12103  51 FEMALE INNER_CITY 16575.4     YES        0 YES      YES
+4 ID12104  23 FEMALE       TOWN 20375.4     YES        3  NO       NO
+5 ID12105  57 FEMALE      RURAL 50576.3     YES        0  NO      YES
+6 ID12106  57 FEMALE       TOWN 37869.6     YES        2  NO      YES
+  current_act mortgage pep
+1          NO       NO YES
+2         YES      YES  NO
+3         YES       NO  NO
+4         YES       NO  NO
+5          NO       NO  NO
+6         YES       NO YES
+> summary(dataset)
+      id                 age            sex               region         
+ Length:600         Min.   :18.00   Length:600         Length:600        
+ Class :character   1st Qu.:30.00   Class :character   Class :character  
+ Mode  :character   Median :42.00   Mode  :character   Mode  :character  
+                    Mean   :42.40                                        
+                    3rd Qu.:55.25                                        
+                    Max.   :67.00                                        
+     income        married             children         car           
+ Min.   : 5014   Length:600         Min.   :0.000   Length:600        
+ 1st Qu.:17265   Class :character   1st Qu.:0.000   Class :character  
+ Median :24925   Mode  :character   Median :1.000   Mode  :character  
+ Mean   :27524                      Mean   :1.012                     
+ 3rd Qu.:36173                      3rd Qu.:2.000                     
+ Max.   :63130                      Max.   :3.000                     
+   save_act         current_act          mortgage             pep           
+ Length:600         Length:600         Length:600         Length:600        
+ Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+                                                                            
+                                                                            
+                                                                            
+> colnames(dataset)
+ [1] "id"          "age"         "sex"         "region"      "income"     
+ [6] "married"     "children"    "car"         "save_act"    "current_act"
+[11] "mortgage"    "pep"        
+> 
+> ncol(dataset)
+[1] 12
+> nrow(dataset)
+[1] 600
+> str(dataset)
+'data.frame':	600 obs. of  12 variables:
+ $ id         : chr  "ID12101" "ID12102" "ID12103" "ID12104" ...
+ $ age        : int  48 40 51 23 57 57 22 58 37 54 ...
+ $ sex        : chr  "FEMALE" "MALE" "FEMALE" "FEMALE" ...
+ $ region     : chr  "INNER_CITY" "TOWN" "INNER_CITY" "TOWN" ...
+ $ income     : num  17546 30085 16575 20375 50576 ...
+ $ married    : chr  "NO" "YES" "YES" "YES" ...
+ $ children   : int  1 3 0 3 0 2 0 0 2 2 ...
+ $ car        : chr  "NO" "YES" "YES" "NO" ...
+ $ save_act   : chr  "NO" "NO" "YES" "NO" ...
+ $ current_act: chr  "NO" "YES" "YES" "YES" ...
+ $ mortgage   : chr  "NO" "YES" "NO" "NO" ...
+ $ pep        : chr  "YES" "NO" "NO" "NO" ...
+> 
+> numbers=seq(1,600)
+> numbers
+  [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+ [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+ [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+ [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+ [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+ [91]  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106 107 108
+[109] 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126
+[127] 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144
+[145] 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162
+[163] 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180
+[181] 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198
+[199] 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216
+[217] 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234
+[235] 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252
+[253] 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 270
+[271] 271 272 273 274 275 276 277 278 279 280 281 282 283 284 285 286 287 288
+[289] 289 290 291 292 293 294 295 296 297 298 299 300 301 302 303 304 305 306
+[307] 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323 324
+[325] 325 326 327 328 329 330 331 332 333 334 335 336 337 338 339 340 341 342
+[343] 343 344 345 346 347 348 349 350 351 352 353 354 355 356 357 358 359 360
+[361] 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378
+[379] 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396
+[397] 397 398 399 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414
+[415] 415 416 417 418 419 420 421 422 423 424 425 426 427 428 429 430 431 432
+[433] 433 434 435 436 437 438 439 440 441 442 443 444 445 446 447 448 449 450
+[451] 451 452 453 454 455 456 457 458 459 460 461 462 463 464 465 466 467 468
+[469] 469 470 471 472 473 474 475 476 477 478 479 480 481 482 483 484 485 486
+[487] 487 488 489 490 491 492 493 494 495 496 497 498 499 500 501 502 503 504
+[505] 505 506 507 508 509 510 511 512 513 514 515 516 517 518 519 520 521 522
+[523] 523 524 525 526 527 528 529 530 531 532 533 534 535 536 537 538 539 540
+[541] 541 542 543 544 545 546 547 548 549 550 551 552 553 554 555 556 557 558
+[559] 559 560 561 562 563 564 565 566 567 568 569 570 571 572 573 574 575 576
+[577] 577 578 579 580 581 582 583 584 585 586 587 588 589 590 591 592 593 594
+[595] 595 596 597 598 599 600
+> 
+> new_dataset=cbind(dataset,numbers)
+> new_dataset
+        id age    sex     region   income married children car save_act
+1  ID12101  48 FEMALE INNER_CITY 17546.00      NO        1  NO       NO
+2  ID12102  40   MALE       TOWN 30085.10     YES        3 YES       NO
+3  ID12103  51 FEMALE INNER_CITY 16575.40     YES        0 YES      YES
+4  ID12104  23 FEMALE       TOWN 20375.40     YES        3  NO       NO
+5  ID12105  57 FEMALE      RURAL 50576.30     YES        0  NO      YES
+6  ID12106  57 FEMALE       TOWN 37869.60     YES        2  NO      YES
+7  ID12107  22   MALE      RURAL  8877.07      NO        0  NO       NO
+8  ID12108  58   MALE       TOWN 24946.60     YES        0 YES      YES
+9  ID12109  37 FEMALE   SUBURBAN 25304.30     YES        2 YES       NO
+10 ID12110  54   MALE       TOWN 24212.10     YES        2 YES      YES
+11 ID12111  66 FEMALE       TOWN 59803.90     YES        0  NO      YES
+12 ID12112  52 FEMALE INNER_CITY 26658.80      NO        0 YES      YES
+13 ID12113  44 FEMALE       TOWN 15735.80     YES        1  NO      YES
+14 ID12114  66 FEMALE       TOWN 55204.70     YES        1 YES      YES
+15 ID12115  36   MALE      RURAL 19474.60     YES        0  NO      YES
+16 ID12116  38 FEMALE INNER_CITY 22342.10     YES        0 YES      YES
+17 ID12117  37 FEMALE       TOWN 17729.80     YES        2  NO       NO
+18 ID12118  46 FEMALE   SUBURBAN 41016.00     YES        0  NO      YES
+19 ID12119  62 FEMALE INNER_CITY 26909.20     YES        0  NO      YES
+20 ID12120  31   MALE       TOWN 22522.80     YES        0 YES      YES
+21 ID12121  61   MALE INNER_CITY 57880.70     YES        2  NO      YES
+22 ID12122  50   MALE       TOWN 16497.30     YES        2  NO      YES
+23 ID12123  54   MALE INNER_CITY 38446.60     YES        0  NO      YES
+24 ID12124  27 FEMALE       TOWN 15538.80      NO        0 YES      YES
+25 ID12125  22   MALE INNER_CITY 12640.30      NO        2 YES      YES
+26 ID12126  56   MALE INNER_CITY 41034.00     YES        0 YES      YES
+27 ID12127  45   MALE INNER_CITY 20809.70     YES        0  NO      YES
+28 ID12128  39 FEMALE       TOWN 20114.00     YES        1  NO       NO
+29 ID12129  39 FEMALE INNER_CITY 29359.10      NO        3 YES       NO
+30 ID12130  61   MALE      RURAL 24270.10     YES        1  NO       NO
+31 ID12131  61 FEMALE      RURAL 22942.90     YES        2  NO      YES
+32 ID12132  20 FEMALE       TOWN 16325.80     YES        2  NO      YES
+33 ID12133  45   MALE   SUBURBAN 23443.20     YES        1 YES      YES
+34 ID12134  33 FEMALE INNER_CITY 29921.30      NO        3 YES      YES
+35 ID12135  43   MALE   SUBURBAN 37521.90      NO        0  NO      YES
+36 ID12136  27 FEMALE INNER_CITY 19868.00     YES        2  NO      YES
+37 ID12137  19   MALE      RURAL 10953.00     YES        3 YES      YES
+38 ID12138  36 FEMALE      RURAL 13381.00      NO        0 YES       NO
+39 ID12139  43 FEMALE       TOWN 18504.30     YES        0 YES      YES
+40 ID12140  66 FEMALE   SUBURBAN 25391.50      NO        2  NO       NO
+41 ID12141  55   MALE       TOWN 26774.20     YES        0  NO       NO
+42 ID12142  47 FEMALE INNER_CITY 26952.60     YES        0 YES       NO
+43 ID12143  67   MALE       TOWN 55716.50      NO        2 YES      YES
+44 ID12144  32 FEMALE       TOWN 27571.50     YES        0 YES       NO
+45 ID12145  20   MALE INNER_CITY 13740.00      NO        2 YES      YES
+46 ID12146  64   MALE INNER_CITY 52670.60     YES        2  NO      YES
+47 ID12147  50 FEMALE INNER_CITY 13283.90      NO        1 YES      YES
+48 ID12148  29   MALE INNER_CITY 13106.60      NO        2  NO      YES
+49 ID12149  52   MALE INNER_CITY 39547.80      NO        2 YES       NO
+50 ID12150  47 FEMALE      RURAL 17867.30     YES        2 YES      YES
+51 ID12151  24   MALE       TOWN 14309.70      NO        2 YES      YES
+52 ID12152  36   MALE       TOWN 23894.80     YES        0  NO       NO
+53 ID12153  43   MALE       TOWN 16259.70     YES        1  NO      YES
+54 ID12154  48   MALE   SUBURBAN 29794.10      NO        1  NO      YES
+55 ID12155  63   MALE       TOWN 56842.50     YES        0  NO      YES
+56 ID12156  52 FEMALE      RURAL 47835.80      NO        3  NO      YES
+57 ID12157  58 FEMALE INNER_CITY 24977.50      NO        0  NO       NO
+58 ID12158  28   MALE INNER_CITY 23124.90     YES        0  NO      YES
+59 ID12159  29 FEMALE INNER_CITY 15143.80     YES        0  NO       NO
+60 ID12160  34   MALE INNER_CITY 25334.30      NO        1 YES      YES
+61 ID12161  42 FEMALE INNER_CITY 24763.30     YES        1  NO      YES
+62 ID12162  65 FEMALE INNER_CITY 36589.00      NO        1 YES       NO
+63 ID12163  47   MALE INNER_CITY 27022.60     YES        2  NO      YES
+64 ID12164  20   MALE INNER_CITY 11700.40     YES        0  NO      YES
+65 ID12165  21   MALE       TOWN  5014.21      NO        0 YES      YES
+66 ID12166  42   MALE INNER_CITY 17390.10     YES        0  NO      YES
+67 ID12167  19   MALE       TOWN 10861.00      NO        2  NO      YES
+68 ID12168  41 FEMALE       TOWN 34892.90      NO        0  NO      YES
+69 ID12169  30   MALE       TOWN 19403.10      NO        2  NO      YES
+70 ID12170  31 FEMALE      RURAL 10441.90     YES        2  NO       NO
+71 ID12171  25   MALE INNER_CITY 14064.90     YES        3 YES      YES
+72 ID12172  21   MALE INNER_CITY  8062.73      NO        0  NO       NO
+73 ID12173  36   MALE INNER_CITY 31982.00     YES        3 YES      YES
+74 ID12174  58 FEMALE INNER_CITY 23197.50     YES        2  NO      YES
+75 ID12175  64 FEMALE INNER_CITY 52674.00      NO        2 YES      YES
+76 ID12176  59 FEMALE      RURAL 35610.50      NO        2 YES       NO
+   current_act mortgage pep numbers
+1           NO       NO YES       1
+2          YES      YES  NO       2
+3          YES       NO  NO       3
+4          YES       NO  NO       4
+5           NO       NO  NO       5
+6          YES       NO YES       6
+7          YES       NO YES       7
+8          YES       NO  NO       8
+9           NO       NO  NO       9
+10         YES       NO  NO      10
+11         YES       NO  NO      11
+12         YES      YES  NO      12
+13         YES      YES YES      13
+14         YES      YES YES      14
+15         YES      YES  NO      15
+16         YES      YES  NO      16
+17          NO      YES  NO      17
+18          NO      YES  NO      18
+19          NO       NO YES      19
+20         YES       NO  NO      20
+21          NO       NO YES      21
+22         YES       NO  NO      22
+23         YES       NO  NO      23
+24         YES      YES  NO      24
+25         YES       NO  NO      25
+26         YES      YES  NO      26
+27         YES      YES  NO      27
+28         YES       NO YES      28
+29         YES      YES  NO      29
+30         YES       NO YES      30
+31         YES       NO  NO      31
+32          NO       NO  NO      32
+33         YES       NO YES      33
+34          NO       NO  NO      34
+35         YES       NO YES      35
+36         YES       NO  NO      36
+37         YES       NO  NO      37
+38         YES       NO YES      38
+39         YES       NO  NO      39
+40         YES       NO  NO      40
+41         YES      YES YES      41
+42         YES       NO  NO      42
+43          NO       NO YES      43
+44         YES      YES  NO      44
+45         YES      YES  NO      45
+46         YES      YES YES      46
+47         YES       NO YES      47
+48         YES      YES YES      48
+49         YES       NO YES      49
+50          NO       NO  NO      50
+51          NO       NO  NO      51
+52          NO       NO  NO      52
+53         YES       NO YES      53
+54         YES       NO YES      54
+55         YES      YES  NO      55
+56          NO       NO YES      56
+57         YES       NO YES      57
+58         YES       NO YES      58
+59         YES       NO  NO      59
+60         YES      YES YES      60
+61         YES      YES YES      61
+62         YES       NO YES      62
+63         YES       NO  NO      63
+64          NO       NO  NO      64
+65         YES      YES  NO      65
+66         YES       NO  NO      66
+67         YES       NO  NO      67
+68         YES      YES  NO      68
+69         YES       NO  NO      69
+70         YES       NO YES      70
+71         YES       NO  NO      71
+72         YES       NO YES      72
+73         YES      YES YES      73
+74          NO      YES  NO      74
+75         YES       NO YES      75
+76          NO       NO YES      76
+ [ reached 'max' / getOption("max.print") -- omitted 524 rows ]
+> 
+> colnames(new_dataset)
+ [1] "id"          "age"         "sex"         "region"      "income"     
+ [6] "married"     "children"    "car"         "save_act"    "current_act"
+[11] "mortgage"    "pep"         "numbers"    
+> 
+> write.csv(new_dataset,"exportData.csv",row.names=FALSE)
+> 
