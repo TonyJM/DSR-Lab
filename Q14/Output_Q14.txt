@@ -1,0 +1,119 @@
+> library(e1071)
+> setwd("C:\\Users\\Jijo Marhews\\Documents\\6 BMSCE\\0 Lab\\DSR Lab\\Q14")
+> getwd()
+[1] "C:/Users/Jijo Marhews/Documents/6 BMSCE/0 Lab/DSR Lab/Q14"
+> 
+> b=read.csv("bayes.csv")
+> b
+        Age Income JobSatisfaction    Desire Enrolls
+1      <=30   High              No      Fair      No
+2      <=30   High              No Excellent      No
+3  35 to 40   High              No      Fair     Yes
+4       >40 Medium              No      Fair     Yes
+5       >40    Low             Yes      Fair     Yes
+6       >40    Low             Yes Excellent      No
+7  31 to 40    Low             Yes Excellent     Yes
+8      <=30 Medium              No      Fair      No
+9      <=30    Low             Yes      Fair     Yes
+10      >40 Medium             Yes      Fair     Yes
+11     <=30 Medium             Yes Excellent     Yes
+12 31 to 40 Medium              No Excellent     Yes
+13 31 to 40   High             Yes      Fair     Yes
+14      >40 Medium              No Excellent      No
+> str(b)
+'data.frame':	14 obs. of  5 variables:
+ $ Age            : chr  "<=30" "<=30" "35 to 40" ">40" ...
+ $ Income         : chr  "High" "High" "High" "Medium" ...
+ $ JobSatisfaction: chr  "No" "No" "No" "No" ...
+ $ Desire         : chr  "Fair" "Excellent" "Fair" "Fair" ...
+ $ Enrolls        : chr  "No" "No" "Yes" "Yes" ...
+> class(b)
+[1] "data.frame"
+> 
+> testset<-data.frame(Age="<=30",Income="Medium",JobSatisfaction="No",Desire="Fair",Enrolls="")
+> testset
+   Age Income JobSatisfaction Desire Enrolls
+1 <=30 Medium              No   Fair        
+> 
+> b<-rbind(b,testset)
+> b
+        Age Income JobSatisfaction    Desire Enrolls
+1      <=30   High              No      Fair      No
+2      <=30   High              No Excellent      No
+3  35 to 40   High              No      Fair     Yes
+4       >40 Medium              No      Fair     Yes
+5       >40    Low             Yes      Fair     Yes
+6       >40    Low             Yes Excellent      No
+7  31 to 40    Low             Yes Excellent     Yes
+8      <=30 Medium              No      Fair      No
+9      <=30    Low             Yes      Fair     Yes
+10      >40 Medium             Yes      Fair     Yes
+11     <=30 Medium             Yes Excellent     Yes
+12 31 to 40 Medium              No Excellent     Yes
+13 31 to 40   High             Yes      Fair     Yes
+14      >40 Medium              No Excellent      No
+15     <=30 Medium              No      Fair        
+> 
+> traindata <- as.data.frame(b[1:14,])
+> testdata <- as.data.frame(b[15,])
+> 
+> traindata
+        Age Income JobSatisfaction    Desire Enrolls
+1      <=30   High              No      Fair      No
+2      <=30   High              No Excellent      No
+3  35 to 40   High              No      Fair     Yes
+4       >40 Medium              No      Fair     Yes
+5       >40    Low             Yes      Fair     Yes
+6       >40    Low             Yes Excellent      No
+7  31 to 40    Low             Yes Excellent     Yes
+8      <=30 Medium              No      Fair      No
+9      <=30    Low             Yes      Fair     Yes
+10      >40 Medium             Yes      Fair     Yes
+11     <=30 Medium             Yes Excellent     Yes
+12 31 to 40 Medium              No Excellent     Yes
+13 31 to 40   High             Yes      Fair     Yes
+14      >40 Medium              No Excellent      No
+> testdata
+    Age Income JobSatisfaction Desire Enrolls
+15 <=30 Medium              No   Fair        
+> 
+> bayesmodel <- naiveBayes(as.factor(Enrolls) ~ Age+Income+JobSatisfaction+Desire,traindata)
+> bayesmodel
+
+Naive Bayes Classifier for Discrete Predictors
+
+Call:
+naiveBayes.default(x = X, y = Y, laplace = laplace)
+
+A-priori probabilities:
+Y
+       No       Yes 
+0.3571429 0.6428571 
+
+Conditional probabilities:
+     Age
+Y          <=30       >40  31 to 40  35 to 40
+  No  0.6000000 0.4000000 0.0000000 0.0000000
+  Yes 0.2222222 0.3333333 0.3333333 0.1111111
+
+     Income
+Y          High       Low    Medium
+  No  0.4000000 0.2000000 0.4000000
+  Yes 0.2222222 0.3333333 0.4444444
+
+     JobSatisfaction
+Y            No       Yes
+  No  0.8000000 0.2000000
+  Yes 0.3333333 0.6666667
+
+     Desire
+Y     Excellent      Fair
+  No  0.6000000 0.4000000
+  Yes 0.3333333 0.6666667
+
+> 
+> results <- predict (bayesmodel,testdata)
+> results
+[1] No
+Levels: No Yes
+> 
