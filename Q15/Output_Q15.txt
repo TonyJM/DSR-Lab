@@ -1,0 +1,100 @@
+> #install.packages("rpart.plot")
+> #install.packages("rpart")
+> 
+> library("rpart")
+> library("rpart.plot")
+> 
+> play=c('yes','no','yes','no','yes','yes','yes','yes','yes','no')
+> outlook=c('rainy','rainy','overcast','sunny','rainy','sunny','rainy','sunny','overcast','sunny')
+> Temperature=c('cool','cool','hot','mild','cool','cool','cool','hot','mild','mild')
+> Humidity=c('normal','normal','high','high','normal','normal','normal','normal','high','high')
+> wind=c('FALSE','TRUE','FALSE','FALSE','FALSE','FALSE','FALSE','FALSE','TRUE','TRUE')
+> 
+> play_decision=cbind(play,outlook,Temperature,Humidity,wind)
+> play_decision
+      play  outlook    Temperature Humidity wind   
+ [1,] "yes" "rainy"    "cool"      "normal" "FALSE"
+ [2,] "no"  "rainy"    "cool"      "normal" "TRUE" 
+ [3,] "yes" "overcast" "hot"       "high"   "FALSE"
+ [4,] "no"  "sunny"    "mild"      "high"   "FALSE"
+ [5,] "yes" "rainy"    "cool"      "normal" "FALSE"
+ [6,] "yes" "sunny"    "cool"      "normal" "FALSE"
+ [7,] "yes" "rainy"    "cool"      "normal" "FALSE"
+ [8,] "yes" "sunny"    "hot"       "normal" "FALSE"
+ [9,] "yes" "overcast" "mild"      "high"   "TRUE" 
+[10,] "no"  "sunny"    "mild"      "high"   "TRUE" 
+> class(play_decision)
+[1] "matrix" "array" 
+> 
+> play_decision=as.data.frame(play_decision) #~-
+> play_decision
+   play  outlook Temperature Humidity  wind
+1   yes    rainy        cool   normal FALSE
+2    no    rainy        cool   normal  TRUE
+3   yes overcast         hot     high FALSE
+4    no    sunny        mild     high FALSE
+5   yes    rainy        cool   normal FALSE
+6   yes    sunny        cool   normal FALSE
+7   yes    rainy        cool   normal FALSE
+8   yes    sunny         hot   normal FALSE
+9   yes overcast        mild     high  TRUE
+10   no    sunny        mild     high  TRUE
+> str(play_decision)
+'data.frame':	10 obs. of  5 variables:
+ $ play       : chr  "yes" "no" "yes" "no" ...
+ $ outlook    : chr  "rainy" "rainy" "overcast" "sunny" ...
+ $ Temperature: chr  "cool" "cool" "hot" "mild" ...
+ $ Humidity   : chr  "normal" "normal" "high" "high" ...
+ $ wind       : chr  "FALSE" "TRUE" "FALSE" "FALSE" ...
+> summary(play_decision)
+     play             outlook          Temperature       
+ Length:10          Length:10          Length:10         
+ Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character  
+   Humidity             wind          
+ Length:10          Length:10         
+ Class :character   Class :character  
+ Mode  :character   Mode  :character  
+> 
+> fit=rpart(play ~ outlook+Temperature+Humidity+wind, method="class",data=play_decision,control=rpart.control(minsplit=1),parms=list(split='information'))
+> fit
+n= 10 
+
+node), split, n, loss, yval, (yprob)
+      * denotes terminal node
+
+1) root 10 3 yes (0.3000000 0.7000000)  
+  2) Temperature=mild 3 1 no (0.6666667 0.3333333)  
+    4) outlook=sunny 2 0 no (1.0000000 0.0000000) *
+    5) outlook=overcast 1 0 yes (0.0000000 1.0000000) *
+  3) Temperature=cool,hot 7 1 yes (0.1428571 0.8571429)  
+    6) wind=TRUE 1 0 no (1.0000000 0.0000000) *
+    7) wind=FALSE 6 0 yes (0.0000000 1.0000000) *
+> #str(fit)
+> 
+> rpart.plot
+function (x = stop("no 'x' arg"), type = 2, extra = "auto", 
+    under = FALSE, fallen.leaves = TRUE, digits = 2, varlen = 0, 
+    faclen = 0, roundint = TRUE, cex = NULL, tweak = 1, clip.facs = FALSE, 
+    clip.right.labs = TRUE, snip = FALSE, box.palette = "auto", 
+    shadow.col = 0, ...) 
+{
+    if (!inherits(x, "rpart")) 
+        stop("Not an rpart object")
+    dots <- match.call(expand.dots = FALSE)$...
+    trace <- 0
+    if (!is.null(dots$trace)) 
+        trace <- eval(dots$trace)
+    x$varinfo <- get.modelframe.info(x, roundint, trace, parent.frame(), 
+        "rpart.plot")
+    prp(x, type = type, extra = extra, under = under, fallen.leaves = fallen.leaves, 
+        digits = digits, varlen = varlen, faclen = faclen, roundint = roundint, 
+        cex = cex, tweak = tweak, clip.facs = clip.facs, clip.right.labs = clip.right.labs, 
+        snip = snip, box.palette = box.palette, shadow.col = shadow.col, 
+        ...)
+}
+<bytecode: 0x000001e2a48f8f08>
+<environment: namespace:rpart.plot>
+> rpart.plot(fit,type=4,extra=1)
+> rpart.plot(fit,type=4,extra=2,clip.right.labs=FALSE,varlen=0,faclen=0)
+> 
